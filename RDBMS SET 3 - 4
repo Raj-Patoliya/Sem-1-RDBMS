@@ -1,0 +1,159 @@
+CREATE TABLE EMPLOYEE
+(
+empid int primary key,
+emp_name varchar(50),
+birth_date varchar(15),
+gender varchar(10),
+dept_no int,
+address varchar(100),
+designation varchar(15) check(designation IN ('manager', 'clerk', 'leader', 'analyst', 'designer', 'coder','tester')),
+salary int check(salary > 0),
+experience int,
+email varchar(23) check(email like '%@%.%'),
+constraint dept_no foreign key (dept_no) references DEPARTMENT (dept_no)
+);
+
+
+*********************************************************************
+
+insert into employee(empid, emp_name, birth_date, gender, dept_no, address, designation, salary,
+experience, email) values (1,'Raj','23-Jun-1999','Male',1010,'Sahara Darwaja','manager',48950,25,'rajpatel@gmail.com');
+
+insert into employee(empid, emp_name, birth_date, gender, dept_no, address, designation, salary,experience, email) values (2,'Amit','23-Apr-1999','Male',2020,'Amroli','clerk',2800,15,'amitkumar@gmail.com');
+
+insert into employee(empid, emp_name, birth_date, gender, dept_no, address, designation, salary,experience, email) values (3,'Jenisha','23-Mar-1998','Female',3030,'Gurugram','leader',4900,10,'jeishapatel@gmail.com');
+
+insert into employee(empid, emp_name, birth_date, gender, dept_no, address, designation, salary,experience, email) values (4,'Samantha','23-Feb-1999','Female',4040,'Ring Road','analyst',15000,1,'samprabhu@gmail.com');
+
+insert into employee(empid, emp_name, birth_date, gender, dept_no, address, designation, salary,experience, email) values (5,'Mukesh','23-Jan-1999','Male',5050,'Elish Bridge','tester',36200,18,'ambani@gmail.com');
+
+insert into employee(empid, emp_name, birth_date, gender, dept_no, address, designation, salary,experience, email) values (6,'Vipul','23-Dec-1999','Male',6060,'Baben','coder',48950,25,'vipulshah@gmail.com');
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+CREATE TABLE DEPARTMENT
+(
+dept_no int primary key,
+dept_nodept_no varchar(50) unique key,
+location varchar(15)
+);
+
+*********************************************************************
+insert into department(dept_no,dept_name,locations) values (1010,'Sales','Surat');
+insert into department(dept_no,dept_name,locations) values (2020,'Devloping','Vapi');
+insert into department(dept_no,dept_name,locations) values (3030,'Designing','Vyara');
+insert into department(dept_no,dept_name,locations) values (4040,'Finance','Navsari');
+insert into department(dept_no,dept_name,locations) values (5050,'Marketing','Ahmedabad');
+insert into department(dept_no,dept_name,locations) values (6060,'IT','Bardoli');
+*********************************************************************
+*********************************************************************
+*********************************************************************
+4.
+desc EMPLOYEE
+desc DEPARTMENT
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+5.
+SELECT * FROM EMPOLYEE ORDER BY EMPID
+SELECT * FROM DEPARTMENT ORDER BY DEPT_ID
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+6.
+DELETE FROM DEPARTMET WHERE DEPAT_NAME ='AHMEDABAD'
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+7.
+
+SELECT * FROM DEPARTMENT WHERE GENDER = 'FEMALE'
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+8.
+SELECT EMP_NAME FROM EMPLOYEE ORDER BY DEPT_NO
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+9.
+SELECT EMP_NAME FROM EMPLOYEE WHERE SALARY BETWEEN 2000 AND 5000
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+10.. Display the names and the designation of all female employee in descending order.
+
+SELECT EMP_NAME,DESIGNATION FROM EMPLOYEE WHERE GENDER IN('Female') order by emp_name
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+
+11. Display the names of all the employees who names starts with ‘A’ ends with ‘A’
+
+select emp_name from employee where emp_name LIKE('a%a')
+
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+
+12. Find the name of employee and salary for those who had obtain minimum salary.
+
+select emp_name from employee where salary =(select min(salary) from employee)
+*********************************************************************
+*********************************************************************
+*********************************************************************
+*********************************************************************
+13.Add 10% raise in salary of all employees whose department is ‘IT’
+update employee set salary = (salary+10%) where dept_no =(select * from department where dept_name = 'IT')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
