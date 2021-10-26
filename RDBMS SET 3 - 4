@@ -210,6 +210,24 @@ insert into student(rollno, sname, class, birthdate) values (8,'Ashita Patel','C
 insert into student(rollno, sname, class, birthdate) values (9,'Dhriti Taniya','C','03-Feb-02')
 insert into student(rollno, sname, class, birthdate) values (10,'Sristi Avaiya','C','03-May-01')
 
+insert into course values(101,'python','100','36');
+insert into course values(102,'dbms','50','15');
+insert into course values(103,'com_network','70','26');
+insert into course values(104,'data_structure','60','36');
+insert into course values(105,'java','90','20');
+
+insert into stdcourse(rollno, courseno, marks) values (1,101,76)
+insert into stdcourse(rollno, courseno, marks) values (1,102,86)
+insert into stdcourse(rollno, courseno, marks) values (2,103,36)
+insert into stdcourse(rollno, courseno, marks) values (3,104,56)
+insert into stdcourse(rollno, courseno, marks) values (4,105,56)
+insert into stdcourse(rollno, courseno, marks) values (5,101,40)
+insert into stdcourse(rollno, courseno, marks) values (6,102,20)
+insert into stdcourse(rollno, courseno, marks) values (7,103,96)
+insert into stdcourse(rollno, courseno, marks) values (8,104,56)
+insert into stdcourse(rollno, courseno, marks) values (9,105,86)
+insert into stdcourse(rollno, courseno, marks) values (10,101,66)
+
 *********************************************************************************************************************************
 *********************************************************************************************************************************
 *********************************************************************************************************************************
