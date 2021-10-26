@@ -199,6 +199,17 @@ marks int
 2. Write an Insert script for insertion of rows with substitution variables and insert appropriate data.
 
 
+insert into student(rollno, sname, class, birthdate) values (1,'Raj Patel','A','23-Jun-99')
+insert into student(rollno, sname, class, birthdate) values (2,'Sristi Patel','A','25-Apr-99')
+insert into student(rollno, sname, class, birthdate) values (3,'Smit Shah','B','10-Mar-01')
+insert into student(rollno, sname, class, birthdate) values (4,'Amit Singh','B','11-Feb-97')
+insert into student(rollno, sname, class, birthdate) values (5,'Pirjada Abarar','C','25-Dec-98')
+insert into student(rollno, sname, class, birthdate) values (6,'Naveen Panjala','D','16-Sep-00')
+insert into student(rollno, sname, class, birthdate) values (7,'Jenish Taniya','C','03-Jul-01')
+insert into student(rollno, sname, class, birthdate) values (8,'Ashita Patel','C','03-Aug-01')
+insert into student(rollno, sname, class, birthdate) values (9,'Dhriti Taniya','C','03-Feb-02')
+insert into student(rollno, sname, class, birthdate) values (10,'Sristi Avaiya','C','03-May-01')
+
 *********************************************************************************************************************************
 *********************************************************************************************************************************
 *********************************************************************************************************************************
