@@ -382,8 +382,27 @@ email varchar(30) check(email like '%@%.%'),
 constraint dept_no foreign key (dept_no) references DEPARTMENT (dept_no)
 )
 
-insert into EMPLOYEE values(1,'Raj','23-june-1999','Male',101,'Surat','Manager',15600,3,'rpatel@gmail.com');
-**********************************************************************************************************************************
+insert into EMPLOYEE values(1,'Raj','23-june-1999','male',101,'Surat','Manager',15600,3,'rpatel@gmail.com');
+insert into EMPLOYEE values(2,'Amisha','13-july-1998','Female',101,'Vapi','CEO',35600,1.2,'apatel@gmail.com');
+insert into EMPLOYEE values(3,'Naveen','3-june-1990','male',101,'Daman','MD',45600,0.2,'npatel@gmail.com');
+insert into EMPLOYEE values(4,'Jenish','1-may-1989','male',101,'Valsad','AD',5600,1.9,'jpatel@gmail.com');
+insert into EMPLOYEE values(5,'Smit','25-aug-1982','male',101,'Silvasa','Developer',35600,5.5,'spatel@gmail.com');
+insert into EMPLOYEE values(6,'Shyam','23-june-1999','male',102,'Surat','Manager',11600,1,'rpatel@gmail.com');
+insert into EMPLOYEE values(7,'Chanchal','13-july-1998','Female',102,'Vapi','CEO',36600,2.2,'apatel@gmail.com');
+insert into EMPLOYEE values(8,'Tanu','3-june-1990','Female',102,'Daman','MD',25600,3.2,'npatel@gmail.com');
+insert into EMPLOYEE values(9,'Mukesh','1-may-1989','male',102,'Valsad','AD',20300,4.9,'jpatel@gmail.com');
+insert into EMPLOYEE values(10,'Parth','25-aug-1982','male',102,'Silvasa','Developer',10600,10.5,'spatel@gmail.com');
+insert into EMPLOYEE values(11,'Ghanshyam','23-june-1999','male',102,'Surat','Manager',22600,1,'rpatel@gmail.com');
+insert into EMPLOYEE values(12,'Era','13-july-1998','Female',102,'Vapi','CEO',23600,2.2,'apatel@gmail.com');
+insert into EMPLOYEE values(13,'Radha','3-june-1990','Female',102,'Daman','MD',19600,3.2,'npatel@gmail.com');
+insert into EMPLOYEE values(14,'Amish','1-may-1989','male',103,'Valsad','AD',50360,4.9,'jpatel@gmail.com');
+insert into EMPLOYEE values(15,'Pinkesh','25-aug-1982','male',103,'Silvasa','Developer',95600,10.5,'spatel@gmail.com');
+insert into EMPLOYEE values(16,'Hiren','23-june-1999','male',104,'Surat','Manager',55600,1,'rpatel@gmail.com');
+insert into EMPLOYEE values(17,'Sonalika','13-july-1998','Female',104,'Vapi','CEO',65600,2.2,'apatel@gmail.com');
+insert into EMPLOYEE values(18,'Mahi','3-june-1990','Female',104,'Daman','MD',85600,3.2,'npatel@gmail.com');
+insert into EMPLOYEE values(19,'Pinku','1-may-1989','male',104,'Valsad','AD',12600,4.9,'jpatel@gmail.com');
+insert into EMPLOYEE values(20,'Gogi','25-aug-1982','male',105,'Silvasa','Developer',18600,10.5,'spatel@gmail.com');
+*********************************************************** ***********************************************************************
 **********************************************************************************************************************************
 
 Project Table
@@ -394,11 +413,33 @@ proj_id int primary key,
 type_of_project varchar(20),
 status varchar(20),
 start_date date,
-emp_id int,
 constraint emp_id foreign key (emp_id) references EMPLOYEE(emp_id)
 )
+
+insert into Project values(1001,'On Site','Pending','23-Oct-2020',1);
+insert into Project values(1002,'At Office','IN Proccess','23-Nov-2018',2);
+insert into Project values(1003,'On Site','Complated','23-Jan-2021',3);
+insert into Project values(1004,'At Office','Debuging','23-Mar-2015',4);
+insert into Project values(1001,'On Site','Pending','23-Oct-2020',5);
+insert into Project values(1002,'At Office','IN Proccess','23-Nov-2018',6);
+insert into Project values(1003,'On Site','Complated','23-Jan-2021',7);
+insert into Project values(1004,'At Office','Debuging','23-Mar-2015',8);
+insert into Project values(1001,'On Site','Pending','23OctDec-2020',9);
+insert into Project values(1002,'At Office','IN Proccess','23-Nov-2018',10);
+insert into Project values(1003,'On Site','Complated','23-Jan-2021',11);
+insert into Project values(1004,'At Office','Debuging','23-Mar-2015',12);
+insert into Project values(1001,'On Site','Pending','23-Oct-2020',13);
+insert into Project values(1002,'At Office','IN Proccess','23-Nov-2018',14);
+insert into Project values(1003,'On Site','Complated','23-Jan-2021',15);
+insert into Project values(1004,'At Office','Debuging','23-Mar-2015',16);
+insert into Project values(1001,'On Site','Pending','23-Oct-2020',17);
+insert into Project values(1002,'At Office','IN Proccess','23-Nov-2018',18);
+insert into Project values(1003,'On Site','Complated','23-Jan-2021',19);
+insert into Project values(1004,'At Office','Debuging','23-Mar-2015',20);
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
+
 
 
 
