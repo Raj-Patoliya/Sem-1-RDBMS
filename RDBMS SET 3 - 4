@@ -372,11 +372,11 @@ emp_id int primary key,
 emp_name varchar(20),
 birth_date date,
 gender varchar(10) check(gender IN ('OTHER', 'Other', 'FEMALE', 'Female', 'male','MALE')),
-dept_no float, 
+dept_no int,
 address varchar(50), 
 designation varchar(20),
 salary int,
-experience int,
+experience float,
 email varchar(30) check(email like '%@%.%'),
 constraint dept_no foreign key (dept_no) references DEPARTMENT (dept_no)
 )
@@ -459,14 +459,14 @@ delete from department where total_employees < 1;
 **********************************************************************************************************************************
 3.Display the names of all the employees who names starts with ‘A’ ends with ‘A’.
   
-  select emp_name from employee where emp_name like 'A%a';
+select emp_name from employee where emp_name like 'A%a';
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
   4.Find the name of employee and salary for those who had obtain minimum salary.
    
-  select emp_name,salary from employee where salary in(select  min(salary)from employee group by dept_no);
+ select emp_name,salary from employee where salary in(select  min(salary)from employee group by dept_no);
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -483,4 +483,34 @@ select dept_name,total_employees from department where dept_name = 'MCA';
 **********************************************************************************************************************************
 
 6.Add 10% raise in salary of all employees whose department is ‘CIVIL’
+
+update employee set salary = salary +(( salary /100)*10) where dept_no = (select dept_no from department where dept_name = 'CIVIL')
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+7. List all employees who born in the current month.
+select * from employee where extract(month from birth_date ) = (SELECT TO_CHAR (SYSDATE, 'MM') FROM DUAL );
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+8. Print the record of employee and dept table as “Employee works in department ‘CE’.
+select emp.emp_name,emp.dept_no,dept.dept_name from employee emp,department dept where dept.dept_no = emp.dept_no and dept.DEPT_NAME = 'CE';
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+9. List names of employees who are fresher’s(less than 1 year of experience).
+ select emp_name, EXPERIENCE from employee where EXPERIENCE <= 1;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+10.List department wise names of employees who has more than 5 years of experience. 
+select emp.emp_name, emp.dept_name,emp.experience from employee emp,department dept where dept.dept_no = emp.dept_no and emp.experience > 5;
+
+11.Write a procedure that will display list of projects which is going to start today. 
 
