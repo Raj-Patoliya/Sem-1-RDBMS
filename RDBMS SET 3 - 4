@@ -408,7 +408,7 @@ Project Table
 
 Create table PROJECT
 (
-proj_id int primary key,
+proj_id int,
 type_of_project varchar(20),
 status varchar(20),
 start_date date,
@@ -510,7 +510,156 @@ select emp.emp_name,emp.dept_no,dept.dept_name from employee emp,department dept
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 10.List department wise names of employees who has more than 5 years of experience. 
+
 select emp.emp_name, emp.dept_name,emp.experience from employee emp,department dept where dept.dept_no = emp.dept_no and emp.experience > 5;
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
 
 11.Write a procedure that will display list of projects which is going to start today. 
 
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+12.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+13.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+14.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+SET : 5
+
+create table HOSTEL 
+(
+HNO int primary key, 
+HNAME varchar, 
+HADDR varchar, 
+TOTAL_CAPACITY int , 
+WARDEN varchar(20)
+)
+insert into hostel(HNO, HNAME, HADDR, TOTAL_CAPACITY, WARDEN) values(1,'Suman Nivas','ADAJAN',25,'Jamandas Ghariwala');
+insert into hostel(HNO, HNAME, HADDR, TOTAL_CAPACITY, WARDEN) values(2,'Chhagan Nivas','Rander',50,'Ramaniklal Chunawala');
+insert into hostel(HNO, HNAME, HADDR, TOTAL_CAPACITY, WARDEN) values(3,'Magan Nivas','CityLight',75,'Chunilal Gajiwala');
+insert into hostel(HNO, HNAME, HADDR, TOTAL_CAPACITY, WARDEN) values(4,'Gagan Nivas','Parle Point',100,'Chhabildas Gheewala');
+insert into hostel(HNO, HNAME, HADDR, TOTAL_CAPACITY, WARDEN) values(5,'Jagat Nivas','Athwa Lines',120,'ChimanLal Jariwala');
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+create table ROOM 
+(
+HNO int, 
+RNO int primary key , 
+RTYPE varchar(20),
+LOCATION varchar(20), 
+NO_OF_STUDENTS int,
+STATUS varchar(20),
+constraints hno foreign key (HNO) references HOSTEL(HNO)
+)
+
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (1,11,'double-seated','First Floor',13,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (1,12,'single-seated','Second Floor',3,'vacant');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (1,13,'double-seated','Third Floor',5,'non occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (1,14,'single-seated','Forth Floor',22,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (1,15,'double-seated','Fifth Floor',1,'occupied');
+
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (2,21,'single-seated','First Floor',19,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (2,22,'double-seated','Second Floor',13,'vacant');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (2,23,'single-seated','Third Floor',10,'non occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (2,24,'double-seated','Forth Floor',12,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (2,25,'single-seated','Fifth Floor',50,'occupied');
+
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (3,31,'double-seated','First Floor',31,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (3,32,'single-seated','Second Floor',30,'vacant');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (3,33,'double-seated','Third Floor',20,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (3,34,'single-seated','Forth Floor',40,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (3,35,'double-seated','Fifth Floor',33,'occupied');
+
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (4,41,'single-seated','First Floor',3,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (4,42,'double-seated','Second Floor',5,'vacant');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (4,43,'single-seated','Third Floor',11,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (4,44,'double-seated','Forth Floor',32,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (4,45,'single-seated','Fifth Floor',23,'occupied');
+
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (5,51,'double-seated','First Floor',13,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (5,52,'single-seated','Second Floor',23,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (5,53,'double-seated','Third Floor',33,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (5,54,'single-seated','Forth Floor',3,'occupied');
+insert into ROOM (HNO, RNO, RTYPE, LOCATION, NO_OF_STUDENTS,STATUS) values (5,55,'double-seated','Fifth Floor',10,'vacant');
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+Create Table CHARGES 
+(
+HNO int, 
+RTYPE varchar(20), 
+CHARGES int,
+constraints hno foreign key (HNO) references HOSTEL(HNO)
+);
+insert into CHARGES (HNO, RTYPE, CHARGES) values (1,'double-seated',1000);
+insert into CHARGES (HNO, RTYPE, CHARGES) values (1,'single-seated',1500);
+
+
+insert into CHARGES (HNO, RTYPE, CHARGES) values (2,'double-seated',2000);
+insert into CHARGES (HNO, RTYPE, CHARGES) values (2,'single-seated',2500);
+
+
+insert into CHARGES (HNO, RTYPE, CHARGES) values (3,'double-seated',3000);
+insert into CHARGES (HNO, RTYPE, CHARGES) values (3,'single-seated',3500);
+
+
+insert into CHARGES (HNO, RTYPE, CHARGES) values (4,'double-seated',4000);
+insert into CHARGES (HNO, RTYPE, CHARGES) values (4,'single-seated',4500);
+
+
+insert into CHARGES (HNO, RTYPE, CHARGES) values (5,'double-seated',5000);
+insert into CHARGES (HNO, RTYPE, CHARGES) values (5,'single-seated',5500);
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+Create table STD 
+(
+SID int primary key, 
+SNAME varchar(20),
+MOBILE varchar(20), 
+GENDER varchar(20),
+FACULTY varchar(20),
+DEPT varchar(20),
+CLASS varchar(20),
+HNO int,
+RNO int,
+constraints studenthno foreign key (HNO) references HOSTEL(HNO),
+constraints RNO foreign key (RNO) references ROOM(RNO)
+);
+
+INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(101,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(101,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+Create Table FEES (SID int, 
+FDATE date, 
+FAMOUNT int,
+constraint sid foreign key references STD(SID)
+);
+
+
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
