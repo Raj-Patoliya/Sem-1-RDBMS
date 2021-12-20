@@ -189,6 +189,29 @@ select e.emp_name||' works in department '||d.dept_name as Records from employee
 *********************************************************************
 20. List names of employees who are fresher’s (less than 1 year of experience)
 select emp_name, experience as "Experience Month Wise" from employee1 where experience < 12;
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+21. Crete Sequence to generate department ID
+create sequence myseq
+minvalue 1
+maxvalue 1000
+start with 1
+increment by 1;
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+22. List department wise names of employees who has more than 5 years of experience.
+select d.dept_name,e.emp_name,e.experience from department1 d,employee1 e where d.dept_no=e.dept_no and e.experience>=5;
+ 
+*********************************************************************
+*********************************************************************
+*********************************************************************
+23. . List department having no employees
+select dept_name from department1 where dept_no not in(select dept_no from employee1);
+
  
 ******************************************************************************************************************************************
 ******************************************************************************************************************************************
@@ -451,6 +474,7 @@ proj_id int,
 type_of_project varchar(20),
 status varchar(20),
 start_date date,
+emp_id int,
 constraint emp_id foreign key (emp_id) references EMPLOYEE(emp_id)
 )
 
@@ -685,10 +709,10 @@ constraints RNO foreign key (RNO) references ROOM(RNO)
 );
 
 INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
-INSERT INTO STD() VALUES(101,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11)
-INSERT INTO STD() VALUES(101,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11)
-INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
-INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(102,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(103,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(104,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
+INSERT INTO STD() VALUES(105,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11)
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
