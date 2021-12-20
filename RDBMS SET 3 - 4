@@ -168,7 +168,7 @@ select emp_name,salary from employee1 where salary = (select min(salary) from em
 *********************************************************************
 *********************************************************************
 16. Add 10% raise in salary of all employees whose department is ‘IT’.
-update employee set salary = (salary+10%) where dept_no =(select * from department where dept_name = 'IT')
+update employee1 set salary = (salary +(salary/10)) where dept_no =(select dept_no from department1 where dept_name = 'IT');
 *********************************************************************
 *********************************************************************
 *********************************************************************
