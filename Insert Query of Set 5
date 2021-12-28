@@ -1,0 +1,151 @@
+
+
+
+
+
+INSERT INTO STD() VALUES(101,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(102,'Amit Chavala','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(103,'Jalim Khan','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(104,'Munawar Faruqi','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(105,'Zakir Khan','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(106,'Soniya Gandhi','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(107,'Narendra Modi','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(108,'JayLalitha','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(109,'Rajnath Sinha','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1010,'Karishma Kapoor','2550550','Female','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1011,'Firoz Gandhi','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1012,'Sanjay Gandhi','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1013,'Indira Gandhi','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1014,'Rahul Gandhi','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1015,'Rajiv Gandhi','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1016,'Kareena Kapoor','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1017,'Nitu Kapoor','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1018,'Ranbir Kapoor','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1019,'Rishi Kapoor','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1020,'Randhir Kapoor','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1021,'Anil Kapoor','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1022,'Arjun Kapoor','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1023,'Jahnvi Kapoor','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1024,'Khushi Kapoor','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1025,'Sonam Kapoor','2550550','Female','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1026,'Tukaram Bhide','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1027,'Atmaram Bhide','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1028,'Madhvi Bhide','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1029,'Sonu Bhide','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1030,'Nandu Bhide','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+
+INSERT INTO STD() VALUES(1031,'Sundarlal','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1032,'Jivdaya Baa','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1033,'Daya Gadda','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1034,'Jethalal Gadda','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1025,'Champak Gadda','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1036,'Monjulika','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1037,'Ramila Sikkandar','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1038,'Paridhi Sharma','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1039,'Chandani Salunke','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1040,'Prachi Desai','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+
+
+INSERT INTO STD() VALUES(1041,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1042,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1043,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1044,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1045,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1046,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1047,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1048,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1049,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1050,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+
+INSERT INTO STD() VALUES(1051,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1052,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1053,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1054,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1055,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1056,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1057,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1058,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1059,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1060,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+
+INSERT INTO STD() VALUES(1061,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1062,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1063,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1064,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1065,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1066,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1067,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1068,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1069,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1070,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+
+INSERT INTO STD() VALUES(1071,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1072,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1073,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1074,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1075,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1076,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1077,'Jalim Patell','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1078,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1079,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1080,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+
+
+INSERT INTO STD() VALUES(1081,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1082,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1083,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1084,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1085,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1086,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1087,'Jalim Patell','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1088,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1089,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1090,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+
+INSERT INTO STD() VALUES(1091,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1092,'Amit Singh','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1093,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1094,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1095,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1096,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1097,'Jalim Patell','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1098,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1099,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1100,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+
+INSERT INTO STD() VALUES(1101,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1102,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1103,'Jalim Patell','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1104,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1105,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+
+INSERT INTO STD() VALUES(1106,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1107,'Amit Singh','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1108,'Jalim Patell','2550550','Male','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1109,'Jenish Taniya','2550550','Female','Science','EC','FY-EC',1,11);
+INSERT INTO STD() VALUES(1110,'Jenish Taniya','2550550','Male','Science','EC','FY-EC',1,11);
