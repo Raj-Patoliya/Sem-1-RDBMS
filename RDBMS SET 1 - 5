@@ -726,3 +726,33 @@ constraint sid foreign key references STD(SID)
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
+
+
+15. Write a trigger which do not allow to insert or update student record if mobile_no
+length is less than 10 digits.
+
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+16. Write a PL/SQL block which will count total number of student’s gender wise.
+Male Students: 999 students
+Female Students: 999 students
+
+DECLARE
+  gendercount INTEGER;
+BEGIN
+  
+  SELECT count(gender) INTO gendercount
+  FROM student where gender = 'Female'; -- Check number of tables
+  dbms_output.put_line ('Female Students:'||gendercount ||' students');
+  
+  SELECT count(gender) INTO gendercount
+  FROM student7 where gender = 'male'; -- Check number of tables
+  dbms_output.put_line ('Male Students:'||gendercount ||' students');
+END;
+
+
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
