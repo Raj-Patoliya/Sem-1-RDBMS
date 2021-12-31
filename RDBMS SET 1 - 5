@@ -756,3 +756,66 @@ END;
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
+
+
+Set : 9
+
+Tables Application ::
+***********************************
+Create table APPLICANT 
+(
+AID int primary key
+ANAME varchar(50), 
+ADDR varchar(100), 
+ABIRTH_DT date
+);
+
+	Insert into Application values
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+Table ENTRANCE_TEST 
+**************************************
+Create Table ENTRANCE_TEST
+(ETID int primary key, 
+ETNAME varchar(50), 
+MAX_SCORE int, 
+CUT_SCORE int
+);
+
+Table :ETEST_CENTRE
+****************************************
+Create Table ETEST_CENTRE 
+(ETCID int primary key, 
+LOCATION varchar(20), 
+INCHARGE varchar(20), 
+CAPACITY int
+);
+
+Table : ETEST_DETAILS 
+**********************************
+
+Create ETEST_DETAILS(
+AID int, 
+ETID int, 
+ETCID int, 
+ETEST_DT date, 
+SCORE int,
+constraints AID foreign key (AID) reference APPLICANT(AID), 
+constraint ETID foreign key (ETID) references ENTRANCE_TEST (ETID),
+constraint ETCID foreign key (ETCID) references ETEST_CENTRE (ETCID)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
