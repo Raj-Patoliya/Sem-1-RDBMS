@@ -756,7 +756,31 @@ END;
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
-
+Set : 7
+Q : 13
+CREATE OR REPLACE PROCEDURE SET7Q13
+AS
+  CURSOR SET7Q13 IS
+  SELECT INO,INAME,EXPIRE_DATE,WEIGHT,PRICE FROM ITEM;
+    INO ITEM.INO%TYPE;
+    INAME ITEM.INAME%TYPE;
+    EXPIRE_DATE ITEM.EXPIRE_DATE%TYPE;
+    PRICE ITEM.PRICE%TYPE;
+    WEIGHT ITEM.WEIGHT%TYPE;
+   BEGIN
+    OPEN SET7Q13;
+       dbms_output.put_line('----------------------------------------------------');
+     dbms_output.put_line('INO | INAME | EXPIRE_DATE | PRICE| WEIGHT | Total');
+    dbms_output.put_line('----------------------------------------------------');
+      LOOP
+        FETCH SET7Q13 INTO INO,INAME,EXPIRE_DATE,PRICE,WEIGHT;
+          EXIT WHEN SET7Q13%NOTFOUND;
+          dbms_output.put_line('  '||INO ||' | '||INAME ||' |  '|| EXPIRE_DATE ||' | '|| WEIGHT||' | '||PRICE ||' | '||(WEIGHT*PRICE));
+           dbms_output.put_line('-----------------------------------------------');
+      end loop;
+      dbms_output.put_line('Grand Total : ');
+    close SET7Q13;
+  end;
 
 Set : 9
 
@@ -808,11 +832,7 @@ constraint ETCID foreign key (ETCID) references ETEST_CENTRE (ETCID)
 
 
 
-
-
-
-
-
+  
 
 
 
