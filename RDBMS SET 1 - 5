@@ -793,8 +793,16 @@ ANAME varchar(50),
 ADDR varchar(100), 
 ABIRTH_DT date
 );
+insert into Applicant values(1,'Raj Hiravala','Surat','23-Jun-1999');
+insert into Applicant values(2,'Jamandas Ghariwala','Surat','15-Jun-1998');
+insert into Applicant values(3,'Ramniklal Chunawala','Surat','23-Feb-1997');
+insert into Applicant values(4,'Chunilal Gajjiwala','Surat','23-Mar-1996');
+insert into Applicant values(5,'Chhabildas Gheewala','Surat','23-Apr-1995');	
+insert into Applicant values(6,'Chimanlal Jariwala','Surat','23-Sep-1994');
+insert into Applicant values(7,'Kantilal Bodiwala','Surat','23-Oct-1993');
+insert into Applicant values(8,'Jayram Bachkaniwala','Surat','23-Nov-1992');
+insert into Applicant values(9,'Pritam Hirawla','Surat','23-Dec-1991');
 
-Insert into Application values
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -807,6 +815,17 @@ MAX_SCORE int,
 CUT_SCORE int
 );
 
+insert into ENTRANCE_test values(101,'CMAT',400,140);
+insert into ENTRANCE_test values(102,'GMAT',1000,400);
+insert into ENTRANCE_test values(103,'KMAT',400,160);
+insert into ENTRANCE_test values(104,'JEE',500,200);
+insert into ENTRANCE_test values(105,'NEET',400,160);
+insert into ENTRANCE_test values(105,'AILET',100,40);
+insert into ENTRANCE_test values(106,'AIIMS',100,40);
+insert into ENTRANCE_test values(107,'KCET',200,80);
+insert into ENTRANCE_test values(108,'Guj-Cet',200,80);
+
+
 Table :ETEST_CENTRE
 ****************************************
 Create Table ETEST_CENTRE 
@@ -815,6 +834,17 @@ LOCATION varchar(20),
 INCHARGE varchar(20), 
 CAPACITY int
 );
+
+
+insert into ETEST_CENTRE values(1001,'Surat','Babu Chapri',50);
+insert into ETEST_CENTRE values(1002,'Vapi','Bobada Dada',60);
+insert into ETEST_CENTRE values(1003,'Valsad','Karim Hatela',70);
+insert into ETEST_CENTRE values(1004,'Daman','Aiyaz Takkar',80);
+insert into ETEST_CENTRE values(1005,'Silvasa','Chhedi Singh',90);
+insert into ETEST_CENTRE values(1006,'Bardoli','Baccha Yadav',100);
+insert into ETEST_CENTRE values(1007,'Billimora','Chota Chhatri',110);
+insert into ETEST_CENTRE values(1008,'Chikhli','Genda Swami',120);
+
 
 Table : ETEST_DETAILS 
 **********************************
@@ -825,15 +855,26 @@ ETID int,
 ETCID int, 
 ETEST_DT date, 
 SCORE int,
-constraints AID foreign key (AID) reference APPLICANT(AID), 
+constraint AID foreign key (AID) references APPLICANT(AID), 
 constraint ETID foreign key (ETID) references ENTRANCE_TEST (ETID),
 constraint ETCID foreign key (ETCID) references ETEST_CENTRE (ETCID)
-)
+);
+
+Insert into ETEST_DETAILS values(1,101,1001,'25-Jan-2020',398);
+Insert into ETEST_DETAILS values(2,102,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(3,103,1003,'25-Jan-2020',399);
+Insert into ETEST_DETAILS values(4,104,1004,'25-Jan-2020',499);
+Insert into ETEST_DETAILS values(5,105,1005,'25-Jan-2020',398);
+Insert into ETEST_DETAILS values(6,106,1006,'25-Jan-2020',99);
+Insert into ETEST_DETAILS values(7,107,1007,'25-Jan-2020',198);
+Insert into ETEST_DETAILS values(8,108,1008,'25-Jan-2020',200);
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
 14. Write a procedure which will print maximum score centre wise.
+
+select a.aid,a.aname, e.ETNAME, c.INCHARGE, et.SCORE from ETEST_DETAILS et,ENTRANCE_TEST e,ETEST_CENTRE c,Applicant a where et.aid = a.aid and et.etid = e.etid and et.etcid = c.etcid;
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
