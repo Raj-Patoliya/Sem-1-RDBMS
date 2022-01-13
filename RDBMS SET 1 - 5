@@ -843,7 +843,7 @@ insert into ETEST_CENTRE values(1004,'Daman','Aiyaz Takkar',80);
 insert into ETEST_CENTRE values(1005,'Silvasa','Chhedi Singh',90);
 insert into ETEST_CENTRE values(1006,'Bardoli','Baccha Yadav',100);
 insert into ETEST_CENTRE values(1007,'Billimora','Chota Chhatri',110);
-insert into ETEST_CENTRE values(1008,'Chikhli','Genda Swami',120);
+insert into ETEST_CENTRE values(1008,'Chikhli','Genda Swami',6);
 
 
 Table : ETEST_DETAILS 
@@ -868,14 +868,98 @@ Insert into ETEST_DETAILS values(5,105,1005,'25-Jan-2020',398);
 Insert into ETEST_DETAILS values(6,106,1006,'25-Jan-2020',99);
 Insert into ETEST_DETAILS values(7,107,1007,'25-Jan-2020',198);
 Insert into ETEST_DETAILS values(8,108,1008,'25-Jan-2020',200);
+Insert into ETEST_DETAILS values(10,109,1008,'25-Jan-2020',178);
+Insert into ETEST_DETAILS values(4,109,1008,'25-Jan-2020',178);
+Insert into ETEST_DETAILS values(2,101,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,103,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,104,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,105,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,106,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,107,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,108,1002,'25-Jan-2020',988);
+Insert into ETEST_DETAILS values(2,109,1002,'25-Jan-2020',988);
+
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
+1.	Modify the APPLICANT table so that every applicant id has an ‘A’ before its value. E.g. if value is ‘1123’, it should become ‘A1123’. .
+	Display test center details where no tests were conducted. 
+	Display details about applicants who have the same score as that of Ajaykumar in ‘ORACLE FUNDAMENTALS’.
+•	ALTER TABLE APPLICANT ADD CHECK (AID LIKE 'A%');
+•	SELECT * FROM ETEST_CENTRE WHERE ETCID not in (SELECT ETCID FROM ETEST_DETAILS);
+•	select a.aid,a.aname, e.ETNAME, et.SCORE from ETEST_DETAILS et,ENTRANCE_TEST e,ETEST_CENTRE c,Applicant a where et.aid = a.aid and et.etid = e.etid and e.etname = 'ORACLE FUNDAMENTALS' and et.etcid = c.etcid and a.AID IN (SELECT AID FROM ETEST_DETAILS WHERE SCORE = (SELECT  SCORE FROM ETEST_DETAILS WHERE AID = (SELECT AID FROM APPLICANT WHERE ANAME = ' Ajaykumar')));
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+2. Display details of applicants who appeared for all tests
 
+	select * from applicant where aid = (select aid from etest_details group by aid having count(aid) =  (select count(*)  from ( select  etid from etest_details group by  etid) ));
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+3.Display those tests where no applicant has failed.
+	select * from entrance_test where etname <> (select e.etname from entrance_test e,etest_details et where e.etid = et.etid and et.score < e.cut_score group by e.etname);
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+4.Display details of entrance test centers which had full attendance between 1 st Oct 15 and 15th Oct 16.
+	select * from etest_centre where etcid = (select etcid from etest_details where etest_dt >= '1-Jan-20' AND  etest_dt <= '1-Feb-20'  group by etcid having count(etcid) IN (select capacity from etest_centre));
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+5.Display details of the applicants who scored more than the cut score in the tests they appeared in.
+	select ed.aid,aname,etname,cut_score,score from etest_details ed, entrance_test et, APPLICANT a  where ed.etid=et.etid  and a.aid = ed.aid and score>cut_score;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+6. Display average and maximum score test wise of tests conducted at Mumbai.
+		*I had change Mumbai with Chikhli*
+select max(ed.score) "MAX", avg(ed.score) "AVG" from etest_details ed, etest_centre et where et.location='Chikhli' and et.etcid=ed.etcid group by ed.etid;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+7.Display the number of applicants who have appeared for each test, test center wise.
+	select ed.etid,ed.etcid,count(aid) from etest_details ed group by ed.etid,ed.etcid order by etid;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+8.Display details about test centers where no tests have been conducted.
+	select * from Etest_centre where etcid not in (select etcid from etest_details);
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+9.For tests, which have been conducted between 2-3-17 and 23-4-17, show details of the tests as well as the test Centre.
+	select ed.etid, et.etname, et.max_score, et.cut_score, ec.etcid, ec.location, ec.incharge, ec.capacity from etest_details ed, entrance_test et, etest_centre ec where etest_dt>'01-dec-2014' and etest_dt<'30-dec-2014' and et.etid=ed.etid and ec.etcid=ed.etcid;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+10.How many applicants appeared in the ‘ORACLE FUNDAMENTALS’ test at Chennai in the month of February?
+* Chennai was changed with Chikhli and February changed with January
+	select count(*) "NO" from etest_details ed, etest_centre ec, entrance_test et where to_char(etest_dt,'mon')='jan' and ec.location='Chikhli' and ec.etcid=ed.etcid and et.etid=ed.etid and etname='ORACLE FUNDAMENTALS' group by ec.etcid;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+11. Display details about applicants who appeared for tests in the same month as the month in which they were born
+	select * from APPLICANT a , etest_details e where a.aid = e.aid and to_char(e.ETEST_DT,'mon') = to_char(a.abirth_dt,'mon') ;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+12. Display the details about APPLICANTS who have scored the highest in each test, test centre wise.
+	select ed.etid,ed.etcid,max(score) from etest_details ed group by ed.etid,ed.etcid order by etid;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+13. Design a read only view, which has details about applicants and the tests that he has appeared for.
+	create view Q13 as select a.aid,aname,et.etid,et.etname from applicant a, etest_details ed,entrance_test et where a.aid=ed.aid and et.etid=ed.etid WITH READ ONLY;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
 14. Write a procedure which will print maximum score centre wise.
 
-select a.aid,a.aname, e.ETNAME, c.INCHARGE, et.SCORE from ETEST_DETAILS et,ENTRANCE_TEST e,ETEST_CENTRE c,Applicant a where et.aid = a.aid and et.etid = e.etid and et.etcid = c.etcid;
-
+CREATE OR REPLACE PROCEDURE SET9Q14
+AS
+  CURSOR SET9Q14 IS
+  SELECT etcid,min(score) as Minimum,max(score) as Maximum FROM etest_details group by etcid;
+    etcid etest_details.etcid%TYPE;
+    mi etest_details.score%TYPE;
+    ma etest_details.score%TYPE;
+   BEGIN
+    OPEN SET7Q13;
+      LOOP
+        FETCH SET9Q14 INTO etcid,mi,ma;
+          EXIT WHEN SET9Q14%NOTFOUND;
+          dbms_output.put_line('  ETCID : '||etcid ||' | Minimum Score '||mi ||' | Maximum Score  '|| ma );
+           dbms_output.put_line('-------------------------------------------------------------');
+      end loop;
+    close SET9Q14;
+  end;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 15. Write a procedure which will print details of entrance test.
@@ -883,10 +967,33 @@ select a.aid,a.aname, e.ETNAME, c.INCHARGE, et.SCORE from ETEST_DETAILS et,ENTRA
 --------------------------------------------------------------------------------
 	Centre name:________ candidate id:_______ date:_______ score:__________
 --------------------------------------------------------------------------------
+
+
+CREATE OR REPLACE PROCEDURE SET9Q15
+AS
+  	CURSOR SET9Q15 IS
+select a.aname, a.aid ,e.score ,e.etest_dt from applicant a, etest_details e where a.aid = e.aid order by a.aid;
+    		aid etest_details.aid%TYPE;
+    		aname applicant.aname%TYPE;
+score etest_details.score%TYPE;
+etest_dt etest_details.etest_dt%TYPE;
+   BEGIN
+    OPEN SET9Q15;
+        LOOP
+            		FETCH SET9Q15 INTO aname,aid,score,etest_dt;
+            		EXIT WHEN SET9Q15%NOTFOUND;
+dbms_output.put_line('----------------------------------------------------------------------------------------------------------------------------');
+dbms_output.put_line('  Candidate Name : '||aname ||'          Candidate id: '||aid ||'        Exam Date: '|| etest_dt||Score: '||score );
+        end loop;
+    close SET9Q15;
+  end;
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 16. Write a trigger which do not allow insertion / updation / deletion of Enterance test
 details on Sunday
+
+
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
