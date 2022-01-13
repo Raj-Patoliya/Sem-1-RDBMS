@@ -1000,6 +1000,38 @@ details on Sunday
 
 
 
+SET 10
+6. Write a trigger which allow to insert or update the bus capacity only greater than zero
+and less than 60.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+7. Write a Procedure which will print tour details, a driver is going to take it. ( pass
+route_no as parameter)
 
-
-
+	CREATE OR REPLACE PROCEDURE SET10Q7
+	AS
+	  CURSOR SET10Q7 IS
+		select routeno,origin,destination,distance,capacity,day,vehical from routemaster ;
+		    routeno routemaster.routeno%TYPE;
+		    origin routemaster.origin%TYPE;
+		    destination routemaster.destination%TYPE;
+		    distance routemaster.distance%TYPE;
+		    capacity routemaster.capacity%TYPE;
+		    day routemaster.day%TYPE;
+		    vehical routemaster.vehical%TYPE;
+	    BEGIN
+    	OPEN SET10Q7;
+        	LOOP
+		    FETCH SET10Q7 INTO routeno,origin,destination,distance,capacity,day,vehical;
+		    EXIT WHEN SET10Q7%NOTFOUND;
+		    dbms_output.put_line('       Route No : '||routeno ||'                        Vehicle No  : '||vehical );
+		    dbms_output.put_line('-------------------------------------------------------------------------------------------------------------------------------------------------');
+		    dbms_output.put_line('      Source          |           Destination         |           Total Days        |         Capacity            |');
+		    dbms_output.put_line('-------------------------------------------------------------------------------------------------------------------------------------------------');
+		    dbms_output.put_line('      '||origin||'          |           '||destination||'         |           '||day||'         |         '||capacity||'            |');
+		    dbms_output.put_line('.');
+		    dbms_output.put_line('.');
+		    dbms_output.put_line('.');
+		end loop;
+	    close SET10Q7;
+  	end;
