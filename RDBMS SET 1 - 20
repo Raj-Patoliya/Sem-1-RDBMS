@@ -581,19 +581,22 @@ select emp.emp_name, emp.dept_name,emp.experience from employee emp,department d
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
-11.Write a procedure that will display list of projects which is going to start today. 
-
+11. Write a function which will display total number of projects based on status (pass status as
+parameter)
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
-12.
+12. Write a procedure that will display list of projects which is going to start today.
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
-13.
+13. Write a trigger which do not allow insertion/updation/deletion into Project table if status
+type is ‘pending’
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -1139,7 +1142,9 @@ end;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 5. Create a function to return customer with maximum orders.
-create or replace function maxi()
+
+***BAki hai***
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
@@ -1228,11 +1233,38 @@ SET 15
 
 EMP (empno, empnm, empadd, salary, date_birth, joindt, deptno)
 DEPT (deptno, deptnm)
-**********************************************************************************************************************************
-**********************************************************************************************************************************
 
 1.Write a PL/SQL block (table above EMP-DEPT table) which takes as input Department name and displays all the employees of this department who has been working since last five years
+Create or replace procedure SET15Q1(dname in varchar)
+AS
+    cursor  SET15Q1 is
+        select e.empno,e.empnm,d.deptnm,e.joindt,trunc(months_between(sysdate,joindt)/12) as Expierence from emp e, dept d where trunc(months_between(sysdate,joindt)/12) > 5 and d.deptno = e.deptno and d.deptnm = dname;
+    EMPNO	emp.EMPNO%type;
+    EMPNM	emp.EMPNM%type;
+    DEPTNM	DEPT.DEPTNM%type;
+    JOINDT	emp.JOINDT%type;
+    EXPIERENCE number;  
+begin 
+    open SET15Q1;
+        loop
+            fetch SET15Q1 into EMPNO,EMPNM,DEPTNM,JOINDT,EXPIERENCE;
+            exit when SET15Q1%NOTFOUND;
+            dbms_output.put_line('EMPLOYEE NO    : '||EMPNO);
+            dbms_output.put_line('EMPLOYEE NAME  : '||EMPNM);
+            dbms_output.put_line('DEPARTMENT NAME: '||DEPTNM);
+            dbms_output.put_line('JOIN DATE      : '||JOINDT);
+            dbms_output.put_line('EXPIERENECE    : '||EXPIERENCE);
+            dbms_output.put_line('******************************');        
+        END LOOP;
+    CLOSE SET15Q1;
+END;
 
+begin 
+ SET15Q1('Sales');
+end;
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
 
 SET 16
 EMPMAST (empno, name, pfno, empbasic, deptno, designation)
@@ -1243,6 +1275,40 @@ DA = 50% of basic
 Medical = 100
 PF = 8.33%of basic
 Print Salary slip. Design your own format
+
+
+Create or replace procedure SET16Q1(eno in int)
+AS
+    cursor  SET16Q1 is
+        select empno, ename, pfno ,empbasic from empmast where empno =eno;
+    EMPNO	 empmast.EMPNO%type;
+    empname	 empmast.ename%type;
+    pfno     empmast.pfno%type;
+    basic empmast.empbasic%type;
+    finalsal number;
+begin 
+    open SET16Q1;
+        loop
+            fetch SET16Q1 into empno, empname, pfno ,basic;
+            exit when SET16Q1%NOTFOUND;
+            dbms_output.put_line('EMPLOYEE NO    : '||EMPNO);
+            dbms_output.put_line('EMPLOYEE NAME  : '||empname);
+            dbms_output.put_line('PF No          : '||pfno);
+            dbms_output.put_line('Basic Salary   : '||basic);
+            finalsal := basic + (basic/100)*15;
+            dbms_output.put_line('HRA   15%           : '||(basic/100)*15);
+            finalsal := finalsal + basic + (basic/100)*50;
+            dbms_output.put_line('DA    50%           : '||(basic/100)*50);
+            dbms_output.put_line('Medical             : 100 ₹');
+            finalsal := finalsal +100;
+            dbms_output.put_line('PF    8.33%         : '||(basic/100)*8.33);
+            finalsal := finalsal - (basic/100)*8.33;
+            dbms_output.put_line('Total Net Pay       : '||finalsal);
+        END LOOP;
+    CLOSE SET16Q1;
+END;
+EXECUTE SET16Q1(2);
+
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -1256,6 +1322,9 @@ Note: 1. AC_type may be S for saving or C for current,
 2. TR_type may be D for deposit or W for withdrawal.
 a. Write a procedure to print the Bank Transaction details by passing from and to dates.
 
+** BAKI CHE **
+
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -1265,9 +1334,47 @@ SET 18
 BRANCH (branch_no, area, city)
 MEMBERS (mno, name branch_no, salary, manager_no)
 Note: Manager can be from one of the members.
-1. Write a procedure which list the name of members who earns more than that of his
-managers.
+1. Write a procedure which list the name of members who earns more than that of his managers.
+Create or replace procedure SET18Q1
+AS
+    cursor SET18Q1 is
+  SELECT w.name,w.salary FROM MEMBERS w, MEMBERS m WHERE w.manager_no = m.mno AND m.salary < w.salary;
+    wname MEMBERS.name%type;
+    wsalary MEMBERS.salary%type;
+begin
+    open SET18Q1;
+        loop
+            fetch SET18Q1 into wname,wsalary;
+		    exit when SET18Q1%notfound; 
+		    dbms_output.put_line('-------------------------------------------');
+		    dbms_output.put_line('      '||wname||' : '||wsalary);
+		   end loop;
+    close SET18Q1;
+    end;
+  EXECUTE SET18Q1;
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
 2. Write a procedure which gives details of employee having maximum salary branch wise.
+Create or replace procedure SET18Q2
+AS
+    cursor SET18Q2 is
+        select mno,branch_no,name,salary from members where (branch_no,salary) in (select branch_no,max(salary) from members group by branch_no);
+    mno MEMBERS.mno%type;
+    branch_no MEMBERS.branch_no%type;
+    name MEMBERS.name%type;
+    salary MEMBERS.salary%type;
+begin
+    open SET18Q2;
+        loop
+            fetch SET18Q2 into mno,branch_no,name,salary;
+		    exit when SET18Q2%notfound; 
+		    dbms_output.put_line('-------------------------------------------------');
+		    dbms_output.put_line('      '||mno||'      '||branch_no||'      '|| name||'      '||salary);
+		   end loop;
+    close SET18Q2;
+    end;
+  EXECUTE SET18Q2;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -1276,10 +1383,45 @@ managers.
 SET 19
 Employee (eid, fname, lname, salary)
 1. Use a Cursor for Loop inside a function to calculate and return total paid salary to all employees by the company.
-
+create or replace function SET19Q1
+return number
+AS
+    cursor SET19Q1 is
+      SELECT salary from employee;
+      tempsal number := 0;
+      salary number;
+begin
+    open SET19Q1;
+        loop
+            fetch SET19Q1 into salary;
+		    exit when SET19Q1%notfound; 
+		    tempsal := tempsal + salary;
+		    end loop;
+    close SET19Q1;
+    return tempsal;
+end;
+select SET19Q1 from employee fetch first 1 rows only;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
 2. Modify the function created above to become a procedure and display the total paid salary from the procedure itself. Instead of calculating for all employees, calculate only for those
 employees whose name starts from a character passed as parameter to the procedure and hence to the cursor.
-	
+
+Create or replace procedure SET19Q2(pattern in varchar)
+AS
+    cursor SET19Q2 is
+        SELECT sum(salary) from employee where lower(fname) like '%'||lower(pattern)||'%' or lower(lname) like '%'||lower(pattern)||'%' ;
+    salary number;
+begin
+    open SET19Q2;
+        loop
+            fetch SET19Q2 into salary;
+		    exit when SET19Q2%notfound; 
+    		    dbms_output.put_line('Total Paid Salary is '||salary);
+		    end loop;
+    close SET19Q2;
+end;
+
+execute SET19Q2('K');
+
+
