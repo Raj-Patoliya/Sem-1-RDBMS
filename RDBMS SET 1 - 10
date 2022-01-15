@@ -1061,30 +1061,103 @@ Create or Replace PROCEDURE SET10Q7(rno IN number) IS
 SET : 11
 
 7. Write a procedure which will print all train details going from Baroda to Banglore.
-**********************************************************************************************************************************
-**********************************************************************************************************************************
 
-8. Write a function which will print arrival time and departure time for a given train. (
-pass train no as a parameter)
+Create or Replace procedure SET11Q7
+AS
+    cursor SET11Q7 is
+        select tno,tname,arrival,DEPARTURE,SOURCESTATION,ENDSTATION from Train where SOURCESTATION = 'Baroda' and ENDSTATION ='Banglore';
+         
+         tno train.tno%type;
+         tname train.tname%type;
+         arrival train.arrival%type;
+         DEPARTURE train.DEPARTURE%type;
+         SOURCESTATION train.SOURCESTATION%type;
+         ENDSTATION train.ENDSTATION%type;
+    begin
+    open SET11Q7;
+        LOOP
+            fetch SET11Q7 into tno,tname,arrival,DEPARTURE,SOURCESTATION,ENDSTATION;
+            exit when SET11Q7%NOTFOUND;
+            dbms_output.put_line('Train No : '||tno);
+            dbms_output.put_line('Train Name : '||tname);
+            dbms_output.put_line('Arrival Time : '||arrival);
+            dbms_output.put_line('Departure Time : '||DEPARTURE);
+            dbms_output.put_line('Source Station  : '||SOURCESTATION);
+            dbms_output.put_line('End Station : '||Endstation);
+        END LOOP;
+    close SET11Q7;
+end;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+8. Write a function which will print arrival time and departure time for a given train. (pass train no as a parameter)
+
+create or replace function SET11Q8(trainno in varchar)
+return number
+is
+    arr train.arrival%type;
+    dep train.departure%type;
+begin
+    select departure into dep from train where tno = trainno;
+    select arrival into arr from train where tno = trainno;
+    dbms_output.put_line('Departure Time is ' || dep);
+    dbms_output.put_line('Arrival Tmie is  '|| arr);
+    return 0;
+end;
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
 9. Write a trigger which do not allow to insert or update passenger record if age is greater
 than 100
+
+Create or replace trigger SET11Q9
+before insert or update on PASSENGER_DETAILS
+for each row 
+declare
+    age PASSENGER_DETAILS.age%Type;
+begin 
+    age :=  :new.age;
+    if age > 100 then
+        Raise_application_error(-20099,'Buddhe Not Allowed');
+    end if;
+end;
+
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 SET 12
 4. Create a trigger that executes whenever country is updated in CUSTOMER table.
+create or replace trigger SET11Q9
+before update on customer
+for each row
+begin 
+    if :new.country <> :old.country then 
+    dbms_output.put_line('Country is updated');
+    end if;
+end;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 5. Create a function to return customer with maximum orders.
+create or replace function maxi()
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 
 6. Create a procedure to display month names of dates of ORDER table. The month names should be unique.
-
+Create or Replace Procedure SET12Q6
+AS
+    Cursor SET12Q6 is
+        SELECT to_char(odate,'Month') from ord group by to_char(odate,'Month');
+    mon varchar(20);
+begin
+    open SET12Q6;
+        loop
+            fetch SET12Q6 into mon;
+            exit when SET12Q6%NOTFOUND;
+            dbms_output.put_line(mon);
+        end loop;
+    close SET12Q6;
+end;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -1092,18 +1165,43 @@ SET 12
 
 SET 14
 1. Write a PLSQL block which will print Employee list (Empno and Name) EMP (empno, empnm, empadd, salary, date_birth, joindt, deptno)
+create or replace procedure SET14Q1
+AS
+    cursor SET14Q1 is
+        select empno , ename from emp;
+    eno number;
+    ename varchar(20);
+begin
+    open SET14Q1;
+        loop
+            fetch SET14Q1 into eno,ename;
+            exit when SET14Q1%NOTFOUND;
+            dbms_output.put_line(eno || '  '||ename);
+        end loop;
+    close SET14Q1;
+end;
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+2. Write a function that returns total number of incomplete jobs, using table 
+JOB (jobid, type_of_job, status)
+Create or replace function SET14Q2
+return number
+is 
+    con number;
+begin
+    select count(status) from job where status = 'incomplete';
+    return con;
+end;
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
-2. Write a function that returns total number of incomplete jobs, using table JOB (jobid, type_of_job, status)
-
-**********************************************************************************************************************************
-**********************************************************************************************************************************
-3. Write a function which displays the number of items whose weight fall between a given ranges for a particular color using table ITEM (itemno, name, color, weight)
+3. Write a function which displays the number of items whose weight fall between a given ranges for a particular color using table 
+ITEM (itemno, name, color, weight)
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 4. Write a procedure to display top five highest paid workers who are specialized in ‘PAINTING" using table WORKER (workerid, name, wage_per_hour, specialized_in, manager_id)
+
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
