@@ -1201,8 +1201,25 @@ ITEM (itemno, name, color, weight)
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 4. Write a procedure to display top five highest paid workers who are specialized in ‘PAINTING" using table WORKER (workerid, name, wage_per_hour, specialized_in, manager_id)
-
-
+create or replace procedure SET14Q4
+AS
+    cursor SET14Q4 is
+        select wname,wage_per_hour,specialized_in from worker where specialized_in = 'Painting' order by wage_per_hour desc fetch first 5 rows only;
+    wname worker.wname%type;
+    wage_per_hour worker.wage_per_hour%type;
+    specialized_in worker.specialized_in%type;
+begin
+    open SET14Q4;
+        loop
+            fetch SET14Q4 into wname,wage_per_hour,specialized_in;
+		    exit when SET14Q4%notfound; 
+		    dbms_output.put_line('-------------------------------------------');
+		    dbms_output.put_line('      '||wname||' : '||wage_per_hour);
+		   end loop;
+    close SET14Q4;
+    end;
+    
+    execute SET14Q4;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 **********************************************************************************************************************************
