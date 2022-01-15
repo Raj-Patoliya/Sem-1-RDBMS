@@ -900,7 +900,9 @@ Insert into ETEST_DETAILS values(2,109,1002,'25-Jan-2020',988);
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 4.Display details of entrance test centers which had full attendance between 1 st Oct 15 and 15th Oct 16.
-	select * from etest_centre where etcid = (select etcid from etest_details where etest_dt >= '1-Jan-20' AND  etest_dt <= '1-Feb-20'  group by etcid having count(etcid) IN (select capacity from etest_centre));
+	select * from etest_centre where etcid = (
+	select etcid from etest_details where etest_dt >= '1-Jan-20' AND  etest_dt <= '1-Feb-20'  group by etcid having count(etcid) IN 
+	(select capacity from etest_centre));
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 5.Display details of the applicants who scored more than the cut score in the tests they appeared in.
@@ -913,7 +915,8 @@ select max(ed.score) "MAX", avg(ed.score) "AVG" from etest_details ed, etest_cen
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 7.Display the number of applicants who have appeared for each test, test center wise.
-	select ed.etid,ed.etcid,count(aid) from etest_details ed group by ed.etid,ed.etcid order by etid;
+	select ed.etid,ed.etcid,count(aid) from etest_details 
+	ed group by ed.etid,ed.etcid order by etid;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 8.Display details about test centers where no tests have been conducted.
@@ -963,12 +966,9 @@ AS
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 15. Write a procedure which will print details of entrance test.
-
 --------------------------------------------------------------------------------
 	Centre name:________ candidate id:_______ date:_______ score:__________
 --------------------------------------------------------------------------------
-
-
 CREATE OR REPLACE PROCEDURE SET9Q15
 AS
   	CURSOR SET9Q15 IS
@@ -993,25 +993,41 @@ dbms_output.put_line('  Candidate Name : '||aname ||'          Candidate id: '||
 16. Write a trigger which do not allow insertion / updation / deletion of Enterance test
 details on Sunday
 
-
-
+CREATE OR REPLACE TRIGGER SET9Q16 
+BEFORE INSERT OR DELETE OR UPDATE ON ETEST_DETAILS
+FOR EACH ROW 
+BEGIN
+    if TO_CHAR(sysdate,'day') = 'sunday ' then
+        Raise_application_error(-20100, 'you can not insert today', FALSE);
+    end if;
+end;
 **********************************************************************************************************************************
 **********************************************************************************************************************************
-
-
-
 SET 10
+
 6. Write a trigger which allow to insert or update the bus capacity only greater than zero
 and less than 60.
+CREATE OR REPLACE TRIGER SET10Q6
+	BEFORE INSERT OR UPDATE ON ROUTEMASTER
+DECLARE
+	cap number;
+begin
+	cap := :new.capacity;
+	if((cap < 0) AND (cap > 60)) then 
+		Raise_application_error(-20021,'Capicity sahi daliye');
+	end if;
+end;
+	
+	
 **********************************************************************************************************************************
 **********************************************************************************************************************************
 7. Write a Procedure which will print tour details, a driver is going to take it. ( pass
 route_no as parameter)
 
-	CREATE OR REPLACE PROCEDURE SET10Q7
-	AS
+	
+Create or Replace PROCEDURE SET10Q7(rno IN number) IS 
 	  CURSOR SET10Q7 IS
-		select routeno,origin,destination,distance,capacity,day,vehical from routemaster ;
+		select routeno,origin,destination,distance,capacity,day,vehical from routemaster where routeno = rno ;
 		    routeno routemaster.routeno%TYPE;
 		    origin routemaster.origin%TYPE;
 		    destination routemaster.destination%TYPE;
@@ -1035,3 +1051,120 @@ route_no as parameter)
 		end loop;
 	    close SET10Q7;
   	end;
+	
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+
+SET : 11
+
+7. Write a procedure which will print all train details going from Baroda to Banglore.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+8. Write a function which will print arrival time and departure time for a given train. (
+pass train no as a parameter)
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+9. Write a trigger which do not allow to insert or update passenger record if age is greater
+than 100
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+SET 12
+4. Create a trigger that executes whenever country is updated in CUSTOMER table.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+5. Create a function to return customer with maximum orders.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+6. Create a procedure to display month names of dates of ORDER table. The month names should be unique.
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+SET 14
+1. Write a PLSQL block which will print Employee list (Empno and Name) EMP (empno, empnm, empadd, salary, date_birth, joindt, deptno)
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+2. Write a function that returns total number of incomplete jobs, using table JOB (jobid, type_of_job, status)
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+3. Write a function which displays the number of items whose weight fall between a given ranges for a particular color using table ITEM (itemno, name, color, weight)
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+4. Write a procedure to display top five highest paid workers who are specialized in ‘PAINTING" using table WORKER (workerid, name, wage_per_hour, specialized_in, manager_id)
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+SET 15
+
+EMP (empno, empnm, empadd, salary, date_birth, joindt, deptno)
+DEPT (deptno, deptnm)
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+1.Write a PL/SQL block (table above EMP-DEPT table) which takes as input Department name and displays all the employees of this department who has been working since last five years
+
+
+SET 16
+EMPMAST (empno, name, pfno, empbasic, deptno, designation)
+DEPT (DNO, DNAME)
+
+Rules: HRA = 15% of basic
+DA = 50% of basic
+Medical = 100
+PF = 8.33%of basic
+Print Salary slip. Design your own format
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+SET 17
+Consider the Bank schema as
+ACCOUNT (AC_NO, NAME, AC_TYPE, BALANCE_AMT, BALANCE_DATE)
+TRANSACTION (AC_NO, DATE, TR_TYPE, AMOUNT, PREV_BALANCE, REMARK)
+Note: 1. AC_type may be S for saving or C for current, 
+2. TR_type may be D for deposit or W for withdrawal.
+a. Write a procedure to print the Bank Transaction details by passing from and to dates.
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+SET 18
+BRANCH (branch_no, area, city)
+MEMBERS (mno, name branch_no, salary, manager_no)
+Note: Manager can be from one of the members.
+1. Write a procedure which list the name of members who earns more than that of his
+managers.
+2. Write a procedure which gives details of employee having maximum salary branch wise.
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+SET 19
+Employee (eid, fname, lname, salary)
+1. Use a Cursor for Loop inside a function to calculate and return total paid salary to all employees by the company.
+
+**********************************************************************************************************************************
+**********************************************************************************************************************************
+
+2. Modify the function created above to become a procedure and display the total paid salary from the procedure itself. Instead of calculating for all employees, calculate only for those
+employees whose name starts from a character passed as parameter to the procedure and hence to the cursor.
+	
